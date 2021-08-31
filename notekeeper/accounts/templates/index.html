@@ -1,0 +1,32 @@
+{% extends 'registration_base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Syncnotes {% endblock %}
+<!-- {% load humanize %} -->
+{% block content %}
+<div class="container" style="margin-bottom: 2rem;">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <h2 style="margin-top: 5%;">Welcome to Syncnotes!</h2>
+            <a href="{% url 'login'%}"  class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="col-lg-6 col-md-6 sm-12">
+            <img src="../static/img/notes.svg" class="img-fluid" alt="banner">
+        </div>
+</div><br>
+<hr>
+<br>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        
+        <img src="../static/img/about.svg" class="img-fluid" alt="banner">
+    </div>
+    <div class="col-lg-6 col-md-6 sm-12">
+        <h2 style="margin-top: 5%;">Know More</h2>
+        <a href="{% url 'about'%}"  class="btn btn-primary">About</a>
+    </div>
+</div>
+</div>
+
+
+{% include 'footer.html' %} 
+{% endblock %}

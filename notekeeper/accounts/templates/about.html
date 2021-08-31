@@ -1,0 +1,44 @@
+{% extends 'registration_base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Syncnotes {% endblock %}
+<!-- {% load humanize %} -->
+{% block content %}
+
+<div class="container" style="margin-bottom: 2rem;">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <h2 style="margin-top: 5%;" class="text-primary">Take Notes</h2>
+            <p>Primary purpose of SyncNotes is note keeping. Notes can be searched and organized by tags given to each note. Start using notes!</p>
+            <a href="{% url 'signup'%}"  class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="col-lg-6 col-md-6 sm-12">
+            <img src="../static/img/takenotes.svg" class="img-fluid" alt="banner">
+        </div>
+</div>
+<br><hr><br>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        <img src="../static/img/link.svg" class="img-fluid" alt="banner">
+        
+    </div>
+    <div class="col-lg-6 col-md-6 sm-12">
+        <h2 style="margin-top: 5%;" class="text-primary">Share Notes</h2>
+        <p>Notes can be shared with generation of a public link that will render a note in Markdown syntax. This is only a view only and not edit feature.</p>
+    </div>
+</div>
+<br><hr><br>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        <h2 style="margin-top: 5%;" class="text-primary">Keyword Extraction</h2>
+        <p>Using NLTK RAKE (Rapid Action Keyword Extraction) algorithm, Keywords can be extracted from notes on basis of Degree and Frequency of word.
+            Further using Unsplash Image API we can use most valued word to get a relevant image for the note.
+        </p>
+    </div>
+    <div class="col-lg-6 col-md-6 sm-12">
+        <img src="../static/img/chatbot.svg" class="img-fluid" alt="banner">
+    </div>
+</div>
+</div>
+{% include 'footer.html' %} 
+
+{% endblock %}

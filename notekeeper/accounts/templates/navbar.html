@@ -1,0 +1,53 @@
+{% load static %}
+<nav class="navbar navbar-expand-md navbar-dark sticky-top bg-primary" data-sidebarClass="navbar-light bg-primary" style="z-index: 3;">
+    <img src="{% static 'img/syncnotes.png' %}" width="40" alt="" style="margin-right: 0.5rem;">
+    <a class="navbar-brand" href="{% url 'home' %}" style="font-family: 'Pacifico', cursive; font-size:2rem;">
+        Syncnotes
+    </a>
+    <button class="navbar-toggler leftNavbarToggler border-primary" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    {% if request.user.is_authenticated %}
+    <button class="ml-auto btn d-lg-none d-md-none d-sm-block d-xs-block" data-toggle="modal" data-target="#add_note" style="cursor: pointer; background-color: transparent;">
+        <img src="{% static 'img/note_add.svg' %}" width="35" alt="">
+    </button>
+    {% endif %}
+    <div class="navbar-collapse collapse" id="navbarNav" >
+        {% if request.user.is_authenticated %}
+        <form class="form-inline my-2 my-lg-0 justify-content-center">
+            <input type="text" id="search_note" class="form-control bg-light text-primary" placeholder="Search"><a id="a_d" class="btn float-right" style="font-size: 25px; color: rgb(255, 255, 255); padding-top: 0;z-index: 5;text-transform: capitalize;"  data-toggle="modal" data-target="#add_note"><img class="d-none d-lg-block d-xl-block" src="{% static 'img/note_add.svg' %}" width="35" alt=""></a>
+          </form>
+        <ul class="navbar-nav ml-auto" >
+            <li class="nav-item">
+                    <a class="btn" href="{% url 'notes' %}" style="color: white;">Notes</a>    
+            </li>
+            <li class="nav-item">
+                <a class="btn" href="{% url 'about' %}" style="color: white;">About</a>    
+        </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle btn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                    Welcome, {{ request.user.username }} <img src="{% static 'img/user.svg' %}" width="25" alt="">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'change_password' %}">Change Password</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                </div>
+            </li>
+        </ul>
+        {% else %}
+        <ul class="navbar-nav ml-auto bg-primary">
+            <li class="nav-item {% if request.resolver_match.url_name == 'login' %} active {% endif %}">
+                <a class="nav-link" href="{% url 'login'%}">Login</a>
+            </li>
+            <li class="nav-item {% if request.resolver_match.url_name == 'signup' %} active {% endif %}">
+                <a class="nav-link" href="{% url 'signup'%}">Signup</a>
+            </li>
+            <li class="nav-item {% if request.resolver_match.url_name == 'about' %} active {% endif %}">
+                <a class="nav-link" href="{% url 'about'%}">About</a>
+            </li>
+            
+        </ul>
+        {% endif %}
+    </div>
+</nav>

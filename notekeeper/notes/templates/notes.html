@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Syncnotes | Home{% endblock %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="container">{% include 'messages.html' %}</div>
+    </div>
+
+    <div class="row" id="notes-homepage" style="margin-bottom: 2%;">
+        {% if all_notes|length == 0 %}
+        <div class="col-lg-12 col-md-12 col-sm-12" style="font-size: 1.5rem;">
+            <p>
+                Looks like you have no notes! Click <img src="{% static 'img/note_add_black.svg' %}" width="35" alt=""> on the top Navigation Bar to add!
+
+            </p>
+            <br><br>
+        
+        </div>
+        <div class="container">
+            <img src="{% static 'img/note_taking.svg' %}" alt="" class="img-fluid">
+        </div>
+        
+        {% else %}
+        
+        {% for note in all_notes %}
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="p-2 bd-highlight">
+                        
+                        <div class="card mw-100">
+                            
+                            <div class="card-body">
+                                
+                              <h4><a href="{% url 'note_detail' note.slug %}" style="text-transform: capitalize;">{{ note.note_title|truncatechars:30 }}</a></h4>
+                              <h6 class="text-muted">{{ note.updated_at|naturaltime }}</h6>
+                              <p class="card-text">{{ note.get_message_as_markdown|truncatechars:150 }}</p>
+                              <a class="open-modal" data-url="{% url 'note_details_edit' note.id %}" style="text-decoration: none; color: white" data-toggle="tooltip" title="Edit Note">    
+                                <span class="btn btn-light" style="border-radius: 100%;"><i class="far fa-edit text-primary"> </i></span>
+                            </a>
+                            <a class="open-delete-modal" data-url="{% url 'confirm_delete_note' note.id %}" data-toggle="tooltip" title="Delete Note">
+                                <span class="btn btn-light" style="border-radius: 100%;"><i class="far fa-trash-alt text-danger" ></i></span>
+                            </a>
+                            </div></div>
+                          </div>
+                </div>
+            </div>
+            
+          <br>
+        </div>
+        
+          {% endfor %}
+
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

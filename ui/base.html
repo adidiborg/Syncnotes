@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <title>title</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <a class="navbar-brand" href="#">Syncnotes</a>
+        <div class="d-lg-none d-xl-none d-md-none ">
+        <i class="fa fa-search" aria-hidden="true" style="color: white;"></i>
+      </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Account
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0 justify-content-center">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      <div class="col-lg-12 col-md-12 offset-md-12 col-sm-12 col-xs-12" style="padding-top: 1%; padding-left: 0; padding-right: 0;">
+        <div class="container">
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+              <a id="a_d" class="btn float-right" style="font-size: 1.5rem; color: rgb(0, 0, 0); padding-top: 0;"  data-toggle="modal" data-target="#add_note"><i class="fas fa-plus" data-toggle="tooltip" title="Add a new note"></i></a>
+            </div>
+            <input type="text" class="form-control">
+          </div>
+  
+          </div>
+ 
+          
+      </div>
+      <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="d-inline-flex p-2 bd-highlight">
+                    
+                    <div class="card" style="width: auto;">
+                        
+                        <div class="card-body">
+                            
+                          <h5><a href="{% url 'note_detail' note.slug %}">note title</a></h5>
+                          <h6 class="text-muted">time</h6>
+                          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, maiores obcaecati quasi saepe quo minus vero nobis aut deserunt dolor dolores, unde rerum provident soluta magnam! Corporis, nemo mollitia amet consectetur velit tenetur qui sapiente sint, magnam pariatur omnis, numquam perspiciatis odit vitae doloribus ducimus accusamus ipsum? Delectus, nisi quis.</p>
+                          <a class="open-modal" data-url="{% url 'note_details_edit' note.id %}" style="text-decoration: none; color: white" data-toggle="tooltip" title="Edit Note">    
+                            <span class="btn btn-info" style="border-radius: 0;"><i class="far fa-edit"> </i></span>
+                        </a>
+                        <a class="open-delete-modal" data-url="{% url 'confirm_delete_note' note.id %}" data-toggle="tooltip" title="Delete Note">
+                            <span class="btn btn-danger" style="border-radius: 0;"><i class="far fa-trash-alt"></i></span>
+                        </a>
+                        </div></div>
+                      </div>
+            </div>
+        </div>
+        
+      <br>
+    </div>
+
+    
+
+    <div class="d-lg-none d-xl-none d-md-none ">
+    <nav class="navbar fixed-bottom navbar-light bg-light justify-content-center nav-pills">
+      <a class="nav-item nav-link" href="#">create</a>
+        <a class="nav-item nav-link" href="#">notes</a>
+        <a class="nav-item nav-link" href="#">tags</a>
+        
+
+    </nav>
+  </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</html>
